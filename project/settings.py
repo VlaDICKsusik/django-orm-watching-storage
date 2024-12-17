@@ -6,23 +6,14 @@ from environs import Env
 env = Env()
 env.read_env()
 
-#secretss
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-<<<<<<< Updated upstream
-        "HOST": "checkpoint.devman.org",
-        "PORT": "5434",
-        "NAME": os.environ["NAME"],
-        "USER":  os.environ["USER"],
-        "PASSWORD":  os.environ["PASSWORD"],
-=======
         "HOST": os.environ["DB_HOST"],
         "PORT": os.environ["DB_PORT"],
         "NAME": os.environ["DB_NAME"],
         "USER":  os.environ["DB_USER"],
         "PASSWORD":  os.environ["DB_PASSWORD"],
->>>>>>> Stashed changes
     }
 }
 
@@ -32,12 +23,7 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 DEBUG =  os.environ["DEBUG"]
 
 ROOT_URLCONF = "project.urls"
-
-<<<<<<< Updated upstream
-
-=======
 ALLOWED_HOSTS= os.environ["ALLOWED_HOSTS"]
->>>>>>> Stashed changes
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
