@@ -1,8 +1,9 @@
 import os
+from environs import Env
 
-#os.environ.get('HOME', '/var/www')
+env = Env()
+env.read_env()
 
-#secretss
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -16,12 +17,12 @@ DATABASES = {
 
 INSTALLED_APPS = ["datacenter"]
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
-DEBUG =  os.environ.get("DEBUG")
+SECRET_KEY = env.str("SECRET_KEY", "REPLACE_ME")
+DEBUG =  env.bool("DEBUG", "True")
 
 ROOT_URLCONF = "project.urls"
 
-ALLOWED_HOSTS= os.environ.get("ALLOWED_HOSTS")
+ALLOWED_HOSTS= os.getenv("ALLOWED_HOSTS")
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES = [
